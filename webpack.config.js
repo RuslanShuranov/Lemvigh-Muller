@@ -18,19 +18,29 @@ module.exports = (env, argv) => {
     devtool: isProduction ? 'source-map' : 'inline-source-map',
     resolve: {
       extensions: ['.tsx', '.ts', '.js', '.jsx'],
-    },
-    devServer: isProduction ? {} : {
-      static: './build',
-      hot: true,
-      port: 3000,
-      historyApiFallback: true,
-      open: true,
-    },
-    optimization: isProduction ? {
-      splitChunks: {
-        chunks: 'all',
+      alias: {
+        '@': path.resolve(__dirname, 'src'),
+        '@components': path.resolve(__dirname, 'src/components'),
+        '@styles': path.resolve(__dirname, 'src/styles'),
+        '@utils': path.resolve(__dirname, 'src/utils'),
       },
-    } : {},
+    },
+    devServer: isProduction
+      ? {}
+      : {
+          static: './build',
+          hot: true,
+          port: 3000,
+          historyApiFallback: true,
+          open: true,
+        },
+    optimization: isProduction
+      ? {
+          splitChunks: {
+            chunks: 'all',
+          },
+        }
+      : {},
     module: {
       rules: [
         {
@@ -40,22 +50,14 @@ module.exports = (env, argv) => {
             {
               loader: 'babel-loader',
               options: {
-                presets: [
-                  '@babel/preset-env',
-                  '@babel/preset-react',
-                  '@babel/preset-typescript',
-                ],
+                presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
               },
             },
           ],
         },
         {
           test: /\.(scss|css)$/,
-          use: [
-            isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
-            'css-loader',
-            'sass-loader',
-          ],
+          use: [isProduction ? MiniCssExtractPlugin.loader : 'style-loader', 'css-loader', 'sass-loader'],
         },
         {
           test: /\.(png|svg|jpg|jpeg|gif)$/i,
@@ -75,20 +77,22 @@ module.exports = (env, argv) => {
       }),
       new CopyPlugin({
         patterns: [
-          { 
-            from: 'public', 
-            to: '', 
+          {
+            from: 'public',
+            to: '',
             globOptions: {
               ignore: ['**/index.html', '**/favicon.ico'],
             },
           },
         ],
       }),
-      ...(isProduction ? [
-        new MiniCssExtractPlugin({
-          filename: '[name].[contenthash].css',
-        }),
-      ] : []),
+      ...(isProduction
+        ? [
+            new MiniCssExtractPlugin({
+              filename: '[name].[contenthash].css',
+            }),
+          ]
+        : []),
     ],
   };
 };

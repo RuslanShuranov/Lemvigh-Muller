@@ -1,0 +1,50 @@
+:root {
+  --color-text-primary: #333;
+  --color-text-secondary: #666;
+  --color-text-light: #aaa;
+  --color-text-white: #fff;
+
+  --color-background-footer: #333;
+
+  --color-border-light: #eee;
+  --color-border-footer: #444;
+}
+
+$color-primary: #58c4e3;
+$color-primary-dark: #4fb2ce;
+$color-error: #e74c3c;
+$color-text-primary: var(--color-text-primary);
+$color-text-secondary: var(--color-text-secondary);
+$color-text-light: var(--color-text-light);
+$color-text-white: var(--color-text-white);
+$color-background-footer: var(--color-background-footer);
+$color-border-light: var(--color-border-light);
+$color-border-footer: var(--color-border-footer);
+
+$spacing-xs: 0.5rem;
+$spacing-sm: 0.75rem;
+$spacing-md: 1rem;
+$spacing-lg: 1.5rem;
+$spacing-xl: 2rem;
+
+$breakpoint-mobile: 480px;
+$breakpoint-tablet: 576px;
+$breakpoint-desktop: 768px;
+$breakpoint-large: 1200px;
+
+$font-size-xs: 0.875rem;
+$font-size-sm: 1rem;
+$font-size-md: 1.125rem;
+$font-size-lg: 1.5rem;
+$font-size-xl: 1.75rem;
+$font-size-xxl: 2rem;
+
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+$shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+$border-radius-sm: 4px;
+$border-radius-md: 8px;

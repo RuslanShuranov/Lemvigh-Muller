@@ -1,0 +1,50 @@
+@use 'styles/index' as *;
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: $color-primary;
+  color: $color-text-white;
+  padding: $spacing-md $spacing-lg;
+  box-shadow: $shadow-sm;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-size: $font-size-xxl;
+    font-weight: $font-weight-bold;
+    margin: 0;
+  }
+}
+
+.app-main {
+  flex: 1;
+  padding: $spacing-xl 0;
+}
+
+@include desktop {
+  .app-header {
+    padding: $spacing-sm 0;
+
+    h1 {
+      font-size: $font-size-lg;
+    }
+  }
+
+  .app-main {
+    padding: $spacing-md 0;
+  }
+}

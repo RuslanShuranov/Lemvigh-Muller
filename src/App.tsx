@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.scss';
+import { Footer } from '@components/Footer';
 
 const App: React.FC = () => {
   return (
@@ -12,7 +13,9 @@ const App: React.FC = () => {
       <main className="app-main">
         <div className="app-main__content">Content</div>
       </main>
-      <footer className="app-footer">Footer</footer>
+      <footer className="app-footer">
+        <Footer />
+      </footer>
     </div>
   );
 };
