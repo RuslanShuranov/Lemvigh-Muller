@@ -1,22 +1,28 @@
 :root {
+  --color-primary: #58c4e3;
+  --color-primary-dark: #4fb2ce;
+  --color-error: #e74c3c;
+
   --color-text-primary: #333;
   --color-text-secondary: #666;
   --color-text-light: #aaa;
   --color-text-white: #fff;
 
+  --color-background-main: #f5f7fa;
   --color-background-footer: #333;
 
   --color-border-light: #eee;
   --color-border-footer: #444;
 }
 
-$color-primary: #58c4e3;
-$color-primary-dark: #4fb2ce;
-$color-error: #e74c3c;
+$color-primary: var(--color-primary);
+$color-primary-dark: var(--color-primary-dark);
+$color-error: var(--color-error);
 $color-text-primary: var(--color-text-primary);
 $color-text-secondary: var(--color-text-secondary);
 $color-text-light: var(--color-text-light);
 $color-text-white: var(--color-text-white);
+$color-background-main: var(--color-background-main);
 $color-background-footer: var(--color-background-footer);
 $color-border-light: var(--color-border-light);
 $color-border-footer: var(--color-border-footer);
