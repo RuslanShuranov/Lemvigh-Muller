@@ -2,6 +2,7 @@ import React from 'react';
 import './App.scss';
 import StoryList from '@components/StoryList/StoryList';
 import Footer from '@components/Footer/Footer';
+import ThemeToggle from '@components/ThemeToggle/ThemeToggle';
 
 const App: React.FC = () => {
   return (
@@ -9,6 +10,7 @@ const App: React.FC = () => {
       <header className="app-header">
         <div className="app-header__content">
           <h1>Hacker News Stories</h1>
+          <ThemeToggle />
         </div>
       </header>
       <main className="app-main">
