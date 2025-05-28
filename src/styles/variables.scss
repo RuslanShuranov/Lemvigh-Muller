@@ -9,10 +9,18 @@
   --color-text-white: #fff;
 
   --color-background-main: #f5f7fa;
+  --color-background-card: #fff;
   --color-background-footer: #333;
 
   --color-border-light: #eee;
   --color-border-footer: #444;
+
+  --color-skeleton-base: #e0e0e0;
+  --color-skeleton-highlight: #f0f0f0;
+
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 $color-primary: var(--color-primary);
@@ -23,6 +31,7 @@ $color-text-secondary: var(--color-text-secondary);
 $color-text-light: var(--color-text-light);
 $color-text-white: var(--color-text-white);
 $color-background-main: var(--color-background-main);
+$color-background-card: var(--color-background-card);
 $color-background-footer: var(--color-background-footer);
 $color-border-light: var(--color-border-light);
 $color-border-footer: var(--color-border-footer);
@@ -50,7 +59,9 @@ $font-weight-medium: 500;
 $font-weight-semibold: 600;
 $font-weight-bold: 700;
 
-$shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+$shadow-sm: var(--shadow-sm);
+$shadow-md: var(--shadow-md);
+$shadow-lg: var(--shadow-lg);
 
 $border-radius-sm: 4px;
 $border-radius-md: 8px;

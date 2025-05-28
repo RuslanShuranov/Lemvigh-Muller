@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.scss';
+import StoryList from '@components/StoryList/StoryList';
 import Footer from '@components/Footer/Footer';
 
 const App: React.FC = () => {
@@ -11,7 +12,7 @@ const App: React.FC = () => {
         </div>
       </header>
       <main className="app-main">
-        <div className="app-main__content">Content</div>
+        <StoryList />
       </main>
       <Footer />
     </div>
