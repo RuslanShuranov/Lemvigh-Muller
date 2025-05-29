@@ -5,28 +5,29 @@ import { useHackerNewsStories } from '@hooks/useHackerNewsStories';
 import SkeletonCard from '@components/SkeletonCard/SkeletonCard';
 
 const StoryList: React.FC = () => {
-  const { storiesWithAuthors, isLoading, error, refetch } = useHackerNewsStories();
+  const { stories, isLoading, error } = useHackerNewsStories();
 
   if (error) {
-    return <div className="story-list__error">Error: {error}</div>;
+    return (
+      <div className="story-list__error">
+        <p>Error fetching stories: {error}</p>
+      </div>
+    );
   }
 
   return (
     <div className="story-list">
       <div className="story-list__header">
         <h2 className="story-list__title">Top-10 Hacker News Stories</h2>
-        <button onClick={refetch} className="story-list__refresh-button">
-          <span className="story-list__refresh-icon" role="img" aria-label="Refresh">
-            🔄
-          </span>
-        </button>
       </div>
       {isLoading ? (
-        Array.from({ length: 10 }).map((_, index) => <SkeletonCard key={index} />)
-      ) : storiesWithAuthors.length === 0 ? (
+        Array.from({ length: 10 }).map((_, index) => (
+          <SkeletonCard key={index} />
+        ))
+      ) : stories.length === 0 ? (
         <div className="story-list__empty">No stories found</div>
       ) : (
-        storiesWithAuthors.map(story => <StoryCard key={story.id} story={story} />)
+        stories.map(story => <StoryCard key={story.id} story={story} />)
       )}
     </div>
   );

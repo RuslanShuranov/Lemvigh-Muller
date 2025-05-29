@@ -29,8 +29,6 @@
 
 @include tablet {
   .story-list {
-    padding: $spacing-md;
-
     &__title {
       font-size: $font-size-lg;
       margin-bottom: $spacing-md;

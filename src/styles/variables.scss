@@ -1,3 +1,5 @@
+@use "sass:color";
+
 :root {
   --color-primary: #58c4e3;
   --color-primary-dark: #4fb2ce;
@@ -10,6 +12,7 @@
 
   --color-background-main: #f5f7fa;
   --color-background-card: #fff;
+  --color-background-card-image: #f0f0f0;
   --color-background-footer: #333;
 
   --color-border-light: #eee;
@@ -31,6 +34,7 @@
 
   --color-background-main: #2a2a2a;
   --color-background-card: #1e1e1e;
+  --color-background-card-image: #2f2f2f;
   --color-background-footer: #1a1a1a;
 
   --color-border-light: #333;
@@ -53,6 +57,7 @@ $color-text-light: var(--color-text-light);
 $color-text-white: var(--color-text-white);
 $color-background-main: var(--color-background-main);
 $color-background-card: var(--color-background-card);
+$color-background-card-image: var(--color-background-card-image);
 $color-background-footer: var(--color-background-footer);
 $color-border-light: var(--color-border-light);
 $color-border-footer: var(--color-border-footer);
