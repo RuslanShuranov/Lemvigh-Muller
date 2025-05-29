@@ -1,79 +1,61 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useMemo } from 'react';
 import useSWR from 'swr';
+import { fetcher, multiFetcher } from '@utils/api';
 import { Story, StoryWithAuthor } from '@/types/story';
 import { User } from '@/types/user';
-import { fetcher } from '@utils/api';
-import { getFulfilledResults, getRandomStoryIds } from '@hooks/helpers';
 import { baseUrl } from '@utils/constants';
+import { getRandomStoryIds } from '@hooks/helpers';
 
-export const useHackerNewsStories = () => {
+export function useHackerNewsStories() {
   const {
-    data: storyIds,
-    error: storyIdsError,
-    isLoading: isTopStoriesLoading,
-  } = useSWR(baseUrl + 'topstories.json', fetcher);
+    data: topIds,
+    error: errorTop,
+    isLoading: loadingTop,
+  } = useSWR<number[]>(`${baseUrl}/topstories.json`, fetcher);
 
-  const [storiesWithAuthors, setStoriesWithAuthors] = useState<StoryWithAuthor[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const selectedIds = useMemo<number[]>(
+    () => getRandomStoryIds(topIds || [], 10),
+    [topIds]
+  );
 
-  const fetchStoriesWithAuthors = useCallback(async () => {
-    setIsLoading(true);
+  const storyUrls: string[] = selectedIds.length
+    ? selectedIds.map(id => `${baseUrl}/item/${id}.json`)
+    : [];
 
-    if (!storyIds || storyIdsError) {
-      setError(storyIdsError ? 'Failed to fetch story IDs' : null);
-      setIsLoading(false);
-      return;
-    }
+  const {
+    data: storiesData,
+    error: errorStories,
+    isLoading: loadingStories,
+  } = useSWR<Story[]>(storyUrls, multiFetcher);
 
-    try {
-      const randomStoryIds = getRandomStoryIds(storyIds, 10);
+  const authorUrls: string[] = storiesData
+    ? storiesData.map(story => `${baseUrl}/user/${story.by}.json`)
+    : [];
 
-      const storyPromises = randomStoryIds.map(id => fetch(baseUrl + `item/${id}.json`).then(res => res.json()));
-      const stories: PromiseSettledResult<Story>[] = await Promise.allSettled(storyPromises);
+  const {
+    data: authorsData,
+    error: errorAuthors,
+    isLoading: loadingAuthors,
+  } = useSWR<User[]>(authorUrls, multiFetcher);
 
-      const fulfilledStories = getFulfilledResults(stories);
+  const storiesWithAuthors = useMemo<StoryWithAuthor[]>(() => {
+    if (!storiesData?.length || !authorsData?.length) return [];
 
-      if (fulfilledStories.length === 0) {
-        setError('No valid stories found');
-        setIsLoading(false);
-        return;
-      }
+    const combined: StoryWithAuthor[] = storiesData.map((story, i) => ({
+      ...story,
+      author: authorsData[i],
+    }));
 
-      const storiesWithAuthorsPromises = fulfilledStories.map(async story => {
-        const authorResponse = await fetch(baseUrl + `user/${story.by}.json`);
-        const author: User = await authorResponse.json();
-        return {
-          ...story,
-          author,
-        } as StoryWithAuthor;
-      });
+    return combined.sort((a, b) => a.score - b.score);
+  }, [storiesData, authorsData]);
 
-      const fetchedStoriesWithAuthors = await Promise.allSettled(storiesWithAuthorsPromises);
-
-      const fulfilledStoriesWithAuthors = getFulfilledResults(fetchedStoriesWithAuthors);
-
-      const sortedStories = fulfilledStoriesWithAuthors.sort((a, b) => a.score - b.score);
-
-      setStoriesWithAuthors(sortedStories);
-      setIsLoading(false);
-    } catch (err) {
-      console.error('Error fetching stories:', err);
-      setError('Failed to fetch stories');
-      setIsLoading(false);
-    }
-  }, [storyIds, storyIdsError]);
-
-  useEffect(() => {
-    if (storyIds) {
-      fetchStoriesWithAuthors();
-    }
-  }, [storyIds, storyIdsError]);
+  const isLoading = loadingTop || loadingStories || loadingAuthors;
+  const error =
+    errorTop?.message || errorStories?.message || errorAuthors?.message || '';
 
   return {
-    storiesWithAuthors,
-    isLoading: isLoading || isTopStoriesLoading,
+    stories: storiesWithAuthors,
+    isLoading,
     error,
-    refetch: fetchStoriesWithAuthors,
   };
-};
+}

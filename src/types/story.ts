@@ -7,9 +7,6 @@ export interface Story {
   time: number;
   score: number;
   by: string;
-  type: string;
-  descendants?: number;
-  kids?: number[];
 }
 
 export interface StoryWithAuthor extends Story {

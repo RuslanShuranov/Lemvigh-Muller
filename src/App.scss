@@ -9,7 +9,7 @@
 .app-header {
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: $header-z-index;
   background-color: $color-primary;
   color: $color-text-white;
   padding: $spacing-md $spacing-lg;
@@ -37,7 +37,7 @@
 
 @include desktop {
   .app-header {
-    padding: $spacing-sm 0;
+    padding: $spacing-sm $spacing-md;
 
     h1 {
       font-size: $font-size-lg;

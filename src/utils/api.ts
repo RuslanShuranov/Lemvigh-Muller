@@ -5,3 +5,6 @@ export const fetcher = (url: string) =>
     }
     return res.json();
   });
+
+export const multiFetcher = (urls: string[]) =>
+  Promise.all(urls.map(url => fetcher(url)));
