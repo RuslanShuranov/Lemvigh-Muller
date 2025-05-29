@@ -1,46 +1,85 @@
-# Getting Started with Create React App
+# Hacker News Reader
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, responsive Hacker News client built with React 19, TypeScript, and SWR for efficient data fetching. This project showcases a clean interface for browsing top Hacker News stories with author details.
 
-## Available Scripts
+## 🚀 Live Demo
 
-In the project directory, you can run:
+Check out the live application: [Live Demo](https://lemvigh-muller.vercel.app/)
 
-### `npm start`
+## ✨ Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- **Intelligent Data Fetching**: Uses SWR for efficient API calls with built-in caching and revalidation
+- **Random Story Selection**: Displays a curated selection of 10 random top stories from Hacker News
+- **Author Information**: Shows detailed author profiles alongside stories
+- **Responsive Design**: Works seamlessly on mobile, tablet, and desktop
+- **Dark/Light Mode**: Includes theme toggle for comfortable reading in any environment
+- **Modern React Patterns**: Implements React 19 with hooks and functional components
+- **Performance Optimized**: Minimizes unnecessary re-renders with useMemo
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 🛠️ Technology Stack
 
-### `npm test`
+- **Frontend**: React 19, TypeScript 4.9
+- **Styling**: SCSS for component-based styling
+- **Data Fetching**: SWR with deduplication and caching
+- **Build Tools**: Webpack 5, Babel
+- **Package Management**: npm
+- **Code Quality**: Prettier for consistent formatting
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🚦 Getting Started
 
-### `npm run build`
+1. Clone the repository
+2. Install dependencies:
+```shell script
+npm install
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. Start the development server:
+```shell script
+npm start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4. Build for production:
+```shell script
+npm run build
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+5. Serve the production build locally:
+```shell script
+npm run serve
+```
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## 📦 Scripts
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- `npm start` - Start development server
+- `npm run build` - Build for production
+- `npm run serve` - Serve production build
+- `npm run format` - Format code with Prettier
+- `npm run format:check` - Check code formatting
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## 🔄 API Integration
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+This application uses the official Hacker News API:
 
-## Learn More
+- Fetches top stories from `/topstories.json`
+- Retrieves item details from `/item/{id}.json`
+- Gets user profiles from `/user/{username}.json`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## ⚡️ Performance Optimization
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- SWR caching strategy prevents redundant API calls
+- Custom hook architecture separates concerns
+- Efficient memory usage with optimized React patterns
+- Smart revalidation only fetches new data when necessary
+
+## 🧩 Project Structure
+
+- `src/components/` - React components
+- `src/hooks/` - Custom React hooks
+- `src/types/` - TypeScript type definitions
+- `src/utils/` - Utility functions and constants
+- `src/assets/` - Static assets
+
+## 📝 License
+
+This project is licensed under the MIT License.
