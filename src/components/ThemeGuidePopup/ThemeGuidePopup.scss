@@ -1,0 +1,121 @@
+@use '../../styles/index' as *;
+
+.theme-guide-popup {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: $spacing-xs;
+  z-index: 2000; // Higher than header
+  animation: fadeIn 0.3s ease-out;
+  pointer-events: none;
+
+  &__content {
+    position: relative;
+    width: 220px;
+    background-color: $color-background-card;
+    border-radius: $border-radius-md;
+    padding: $spacing-md;
+    box-shadow: $shadow-md;
+    text-align: center;
+    animation: slideIn 0.3s ease-out;
+    pointer-events: auto;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      right: 10px;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 10px solid $color-background-card;
+    }
+  }
+
+  &__close {
+    position: absolute;
+    top: $spacing-xs;
+    right: $spacing-xs;
+    background: none;
+    border: none;
+    font-size: $font-size-xl;
+    line-height: 1;
+    cursor: pointer;
+    color: $color-text-light;
+    padding: $spacing-xs;
+
+    &:hover {
+      color: $color-text-primary;
+    }
+  }
+
+  &__icon {
+    font-size: $font-size-xxl;
+    margin-bottom: $spacing-md;
+  }
+
+  &__title {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacing-sm;
+    color: $color-text-primary;
+  }
+
+  &__message {
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+    margin-bottom: $spacing-sm;
+    line-height: 1.3;
+  }
+
+  &__button {
+    background-color: $color-primary;
+    color: $color-text-white;
+    border: none;
+    border-radius: $border-radius-sm;
+    padding: $spacing-xs $spacing-md;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: $color-primary-dark;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@include mobile {
+  .theme-guide-popup {
+    &__content {
+      padding: $spacing-md;
+    }
+
+    &__title {
+      font-size: $font-size-md;
+    }
+
+    &__message {
+      font-size: $font-size-sm;
+    }
+  }
+}
