@@ -62,7 +62,12 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(90deg, transparent, var(--color-skeleton-highlight), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--color-skeleton-highlight),
+      transparent
+    );
     animation: pulse 1.5s infinite;
   }
 }
