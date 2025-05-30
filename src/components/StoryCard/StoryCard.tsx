@@ -48,4 +48,5 @@ const StoryCard: React.FC<StoryCardProps> = ({ story }) => {
   );
 };
 
+StoryCard.displayName = 'StoryCard';
 export default StoryCard;

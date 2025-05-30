@@ -33,4 +33,5 @@ const StoryList: React.FC = () => {
   );
 };
 
+StoryList.displayName = 'StoryList';
 export default StoryList;

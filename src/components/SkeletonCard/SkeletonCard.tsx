@@ -20,4 +20,5 @@ const SkeletonCard: React.FC = () => {
   );
 };
 
+SkeletonCard.displayName = 'SkeletonCard';
 export default SkeletonCard;

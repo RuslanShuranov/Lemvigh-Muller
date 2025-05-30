@@ -50,4 +50,5 @@ const ThemeGuidePopup: React.FC = () => {
   );
 };
 
+ThemeGuidePopup.displayName = 'ThemeGuidePopup';
 export default ThemeGuidePopup;
