@@ -1,0 +1,60 @@
+@use '../../styles/index' as *;
+
+%card-base {
+  display: flex;
+  background-color: $color-background-card;
+  border-radius: $border-radius-md;
+  box-shadow: $shadow-md;
+  overflow: hidden;
+  margin-bottom: $spacing-md;
+}
+
+%card-image {
+  flex: 0 0 150px;
+}
+
+%card-content {
+  flex: 1;
+  padding: $spacing-md;
+}
+
+%card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: $spacing-sm;
+}
+
+%card-author {
+  display: flex;
+  flex-wrap: wrap;
+  border-top: 1px solid $color-border-light;
+  padding-top: $spacing-sm;
+}
+
+%card-meta-item {
+  margin-right: $spacing-md;
+  margin-bottom: $spacing-xs;
+}
+
+@include desktop {
+  %card-base-desktop {
+    flex-direction: column;
+  }
+
+  %card-image-desktop {
+    flex: 0 0 auto;
+    height: 120px;
+    width: 100%;
+  }
+}
+
+@include mobile {
+  %card-meta-mobile,
+  %card-author-mobile {
+    flex-direction: column;
+  }
+
+  %card-meta-item-mobile {
+    margin-bottom: calc($spacing-sm / 2);
+  }
+}

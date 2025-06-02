@@ -1,22 +1,18 @@
 @use '../../styles/index' as *;
+@use '../../styles/components/CardBase' as *;
 
 .skeleton-card {
-  display: flex;
-  background-color: $color-background-card;
-  border-radius: $border-radius-md;
-  box-shadow: $shadow-md;
-  overflow: hidden;
-  margin-bottom: $spacing-md;
+  @extend %card-base;
 
   &__image {
-    flex: 0 0 150px;
+    @extend %card-image;
+
     height: 150px;
     background-color: var(--color-skeleton-base);
   }
 
   &__content {
-    flex: 1;
-    padding: $spacing-md;
+    @extend %card-content;
   }
 
   &__title {
@@ -28,23 +24,18 @@
   }
 
   &__meta {
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: $spacing-sm;
+    @extend %card-meta;
   }
 
   &__author {
-    display: flex;
-    flex-wrap: wrap;
-    border-top: 1px solid $color-border-light;
-    padding-top: $spacing-sm;
+    @extend %card-author;
   }
 
   &__meta-item {
+    @extend %card-meta-item;
+
     height: 16px;
     width: 100px;
-    margin-right: $spacing-md;
-    margin-bottom: $spacing-xs;
     background-color: var(--color-skeleton-base);
     border-radius: $border-radius-sm;
   }
@@ -83,12 +74,10 @@
 
 @include desktop {
   .skeleton-card {
-    flex-direction: column;
+    @extend %card-base-desktop;
 
     &__image {
-      flex: 0 0 auto;
-      height: 120px;
-      width: 100%;
+      @extend %card-image-desktop;
     }
   }
 }
@@ -97,11 +86,11 @@
   .skeleton-card {
     &__meta,
     &__author {
-      flex-direction: column;
+      @extend %card-meta-mobile;
     }
 
     &__meta-item {
-      margin-bottom: calc($spacing-sm / 2);
+      @extend %card-meta-item-mobile;
     }
   }
 }
