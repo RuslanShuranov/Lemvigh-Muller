@@ -1,5 +1,6 @@
 import React from 'react';
 import { StoryWithAuthor } from '@/types/story';
+import { formatDate } from '@/helpers';
 import './StoryCard.scss';
 
 interface StoryCardProps {
@@ -7,11 +8,6 @@ interface StoryCardProps {
 }
 
 const StoryCard: React.FC<StoryCardProps> = ({ story }) => {
-  const formatDate = (timestamp: number): string => {
-    const date = new Date(timestamp * 1000);
-    return date.toLocaleString();
-  };
-
   return (
     <div className="story-card">
       <div className="story-card__image">

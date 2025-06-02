@@ -1,6 +1,7 @@
 import ThemeToggle from '@components/ThemeToggle/ThemeToggle';
 import ThemeGuidePopup from '@components/ThemeGuidePopup/ThemeGuidePopup';
 import React from 'react';
+import './Header.scss';
 
 const Header = () => {
   return (
